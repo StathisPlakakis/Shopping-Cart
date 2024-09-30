@@ -5,6 +5,7 @@ import close from '../../assets/cross-small.svg'
 import closeHover from '../../assets/cross-small-hover.svg'
 import styles from './Header.module.css';
 import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -62,8 +63,8 @@ export default function Header() {
           </div>
 
           <div className={styles.sections}>
-            <h2>Home</h2>
-            <h2>Shop</h2>
+            <Link to="/" onClick={handleReduction}><h2>Home</h2></Link>
+            <Link to="shop" onClick={handleReduction}><h2>Shop</h2></Link>
           </div>
 
         </div>
