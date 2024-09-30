@@ -1,4 +1,107 @@
+@font-face {
+  font-family: "Anton", sans-serif;
+  src: url('../../assets/Anton/Anton-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root{
+  --textColor-onHover: rgb(255, 209, 178);
+}
+
+.header {
+  background-image: linear-gradient(to right, rgb(247, 100, 1), rgb(255, 129, 45));
+  color: white;
+  height: 10vh;
+  transition: height 0.5s ease;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.header.expanded {
+  height: 100vh;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+
+.content.hidden {
+  opacity: 0;
+}
+
 .menu {
   display: flex;
   align-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu > img {
+  height: 20px;
+  width: 20px;
+}
+
+.menu:hover {
+  color: var(--textColor-onHover);
+}
+
+
+.logo {
+  font-family: "Anton", sans-serif;
+}
+
+.cart {
+  height: 30px;
+  width: 30px;
+}
+
+.newContent {
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newContent.visible {
+  opacity: 1;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.sections > h2:hover {
+  color: var(--textColor-onHover);
+  cursor: pointer;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.close > img {
+  height: 30px;
+  width: 30px;
+}
+
+.close:hover {
+  color: var(--textColor-onHover);
 }
