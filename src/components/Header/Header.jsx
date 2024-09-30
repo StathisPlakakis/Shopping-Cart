@@ -5,25 +5,26 @@ import close from '../../assets/cross-small.svg'
 import closeHover from '../../assets/cross-small-hover.svg'
 import styles from './Header.module.css';
 import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-export default function Header() {
-  const [isExpanded, setIsExpanded] = useState(false);
+export default function Header({ isExpanded, handleExpansion, handleReduction }) {
   const [showNewContent, setShowNewContent] = useState(false);
   const menuImgRef = useRef(null);
   const closeImgRef = useRef(null);
+  const location = useLocation();
+  const pathName =  location.pathname;
 
 
-  const handleExpansion = () => {
-    setIsExpanded(true);
+  const handleMenuClick= () => {
+    handleExpansion()
     
     setTimeout(() => {
       setShowNewContent(true);
     }, 500);
   };
 
-  const handleReduction = () => {
-    setIsExpanded(false);
+  const handleCloseClick = () => {
+    handleReduction()
     
     setTimeout(() => {
       setShowNewContent(false);
@@ -38,7 +39,7 @@ export default function Header() {
         <div className={`${styles.content} ${isExpanded ? styles.hidden : ''}`}>
           <div 
             className={styles.menu} 
-            onClick={handleExpansion} 
+            onClick={handleMenuClick} 
             onMouseOver={() => menuImgRef.current.src=`${menuHover}`}
             onMouseLeave={() => menuImgRef.current.src=`${menu}`}
           >
@@ -54,7 +55,7 @@ export default function Header() {
         <div className={`${styles.newContent} ${isExpanded ? styles.visible : ''}`}>
           <div 
             className={styles.close} 
-            onClick={handleReduction}
+            onClick={handleCloseClick}
             onMouseOver={() => closeImgRef.current.src=`${closeHover}`}
             onMouseLeave={() => closeImgRef.current.src=`${close}`}
           >
@@ -63,8 +64,20 @@ export default function Header() {
           </div>
 
           <div className={styles.sections}>
-            <Link to="/" onClick={handleReduction}><h2>Home</h2></Link>
-            <Link to="shop" onClick={handleReduction}><h2>Shop</h2></Link>
+            <Link 
+              to="/" 
+              onClick={handleCloseClick}
+              className={`${pathName === '/' ? styles.active : ''}`}
+            >
+              <h2>Home</h2>
+            </Link>
+            <Link 
+              to="shop" 
+              onClick={handleCloseClick}
+              className={`${pathName === '/shop' ? styles.active : ''}`}
+            >
+              <h2>Shop</h2>
+            </Link>
           </div>
 
         </div>

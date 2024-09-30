@@ -107,10 +107,16 @@
 }
 
 a {
+  text-align: center;
   text-decoration: none;
   color: white;
+  transition: transform 0.5s ease;
 }
 
 a:hover {
   color: var(--textColor-onHover);
+}
+
+.active {
+  transform: translate(50px) scale(1.5);
 }
