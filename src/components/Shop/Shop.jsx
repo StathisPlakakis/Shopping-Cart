@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from './Shop.module.css'
 import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 
 export default function Shop() {
@@ -37,9 +38,10 @@ export default function Shop() {
         categories && 
         <ul>
           {categories.map((category, index) => 
-          <Link to={category}><li key={index} className={styles.category}>{category}</li></Link>)}
+          <Link to={category} key={index}><li key={index} className={styles.category}>{category}</li></Link>)}
         </ul>
       }
+      <Outlet/>
     </div>
   )
 }

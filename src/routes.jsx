@@ -1,11 +1,14 @@
 import App from "./App";
 import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Category from "./components/Category/Category";
 
 const routes = [
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index:true,
@@ -13,7 +16,10 @@ const routes = [
       },
       {
         path:"shop",
-        element: <Shop/>
+        element: <Shop/>,
+        children: [
+          {path:":name", element:<Category/>}
+        ]
       },
     ]
   },
