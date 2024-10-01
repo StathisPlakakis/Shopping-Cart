@@ -11,3 +11,7 @@ li {
 li:hover {
   cursor: pointer;
 }
+
+.category {
+  color: black;
+}

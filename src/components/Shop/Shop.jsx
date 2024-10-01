@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import styles from './Shop.module.css'
+import { Link } from "react-router-dom";
+
 
 export default function Shop() {
   const [categories, setCategories] = useState(null);
@@ -35,7 +37,7 @@ export default function Shop() {
         categories && 
         <ul>
           {categories.map((category, index) => 
-          <li key={index}>{category}</li>)}
+          <Link to={category}><li key={index} className={styles.category}>{category}</li></Link>)}
         </ul>
       }
     </div>
