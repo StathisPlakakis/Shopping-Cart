@@ -1,0 +1,17 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li {
+  width: fit-content;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.product {
+  color: black;
+}

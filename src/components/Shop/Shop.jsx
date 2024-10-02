@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import styles from './Shop.module.css'
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 
 export default function Shop() {
   const [categories, setCategories] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const isChildPath = location.pathname !== '/shop';
 
   useEffect(() => {
     const fetchDataForCategories = async () => {
@@ -33,13 +36,18 @@ export default function Shop() {
 
   return (
     <div>
-      {loading && <p>Loading</p>}
-      {
-        categories && 
-        <ul>
-          {categories.map((category, index) => 
-          <Link to={category} key={index}><li key={index} className={styles.category}>{category}</li></Link>)}
-        </ul>
+      {!isChildPath ?
+        <div>
+          {loading && <p>Loading</p>}
+          {
+            categories &&
+            <ul>
+              {categories.map((category, index) =>
+              <Link to={category} key={index}><li key={index} className={styles.category}>{category}</li></Link>)}
+            </ul>
+          }
+        </div> :
+        ''
       }
       <Outlet/>
     </div>
