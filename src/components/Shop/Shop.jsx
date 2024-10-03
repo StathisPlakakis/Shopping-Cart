@@ -3,6 +3,8 @@ import styles from './Shop.module.css'
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+
 
 
 export default function Shop() {
@@ -11,6 +13,7 @@ export default function Shop() {
   const [error, setError] = useState(null);
   const location = useLocation();
   const isChildPath = location.pathname !== '/shop';
+  const {handleItemsToCartAddition} = useOutletContext()
 
   useEffect(() => {
     const fetchDataForCategories = async () => {
@@ -49,7 +52,7 @@ export default function Shop() {
         </div> :
         ''
       }
-      <Outlet/>
+      <Outlet context={{handleItemsToCartAddition}}/>
     </div>
   )
 }

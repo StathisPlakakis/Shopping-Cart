@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from './Product.module.css'
+import { useOutletContext } from "react-router-dom";
 
 export default function Product() {
 
@@ -8,6 +9,8 @@ export default function Product() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {handleItemsToCartAddition} = useOutletContext();
+  const quantityRef = useRef(null);
 
 
   useEffect(() => {
@@ -32,6 +35,19 @@ export default function Product() {
     fetchDataForItem();
   }, [name])
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    let newItem = {
+      id:`${item.id}`,
+      title:`${item.title}`,
+      price:`${item.price}`,
+      quantity:`${quantityRef.current.value}`,
+      image:`${item.image}`
+    };
+
+    handleItemsToCartAddition(newItem);
+  }
+
   return (
     <div>
       {loading && <p>Loading</p>}
@@ -50,8 +66,9 @@ export default function Product() {
               defaultValue={1}
               min={1}
               id='quantity'
+              ref={quantityRef}
             />
-            <button>Add to chart</button>
+            <button onClick={handleClick}>Add to chart</button>
           </form>
         </div>
         

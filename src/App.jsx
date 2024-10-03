@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [itemsToCart, setItemsToCart] = useState([]);
 
   const handleExpansion = () => {
     setIsExpanded(true);
@@ -14,6 +15,11 @@ export default function App() {
     setIsExpanded(false);
   };
 
+  const handleItemsToCartAddition = (newItem) => {
+    // setItemsToCart(itemsToCart.push(newItem))
+    console.log(newItem)
+  }
+
   return (
     <>
       <Header 
@@ -21,7 +27,7 @@ export default function App() {
         handleExpansion={handleExpansion}
         handleReduction={handleReduction}
       />
-      {!isExpanded ? <Outlet/> : null}
+      {!isExpanded ? <Outlet context={{handleItemsToCartAddition}}/> : null}
       
     </>
   )

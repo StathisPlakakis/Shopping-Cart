@@ -4,6 +4,7 @@ import styles from './Category.module.css';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 
 
@@ -13,6 +14,7 @@ export default function Category() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {handleItemsToCartAddition} = useOutletContext();
   const location = useLocation();
   let str = location.pathname;
   let charToReplace2 = " ";
@@ -58,7 +60,7 @@ export default function Category() {
         </div> :
         ''
       }
-      <Outlet/>
+      <Outlet context={{handleItemsToCartAddition}}/>
       
     </div>
   )
