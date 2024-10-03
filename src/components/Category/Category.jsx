@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
 import styles from './Category.module.css';
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-
+import { Outlet } from "react-router-dom";
 
 
 
@@ -15,7 +14,11 @@ export default function Category() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const location = useLocation();
-  const isChildPath = location.pathname !== `/${name}`;
+  let str = location.pathname;
+  let charToReplace2 = " ";
+  let replacement2 = "%20";
+  let newStr2 = str.replace(new RegExp(charToReplace2, 'g'), replacement2);
+  const isChildPath = location.pathname !== `${newStr2}`;
 
   useEffect(() => {
     const fetchDataForProducts = async () => {
@@ -39,6 +42,7 @@ export default function Category() {
     fetchDataForProducts();
   }, [name])
 
+
   return (
     <div>
       {!isChildPath ?
@@ -48,13 +52,14 @@ export default function Category() {
             products &&
             <ul>
               {products.map((product, index) =>
-              <Link to={product} key={index}><li key={index} className={styles.product}>{product.title}</li></Link>)}
+              <Link to={`${product.id}`} key={index}><li key={index} className={styles.product}>{product.title}</li></Link>)}
             </ul>
           }
         </div> :
         ''
       }
       <Outlet/>
+      
     </div>
   )
 }
