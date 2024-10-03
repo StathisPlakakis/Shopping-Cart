@@ -16,8 +16,9 @@ export default function App() {
   };
 
   const handleItemsToCartAddition = (newItem) => {
-    // setItemsToCart(itemsToCart.push(newItem))
-    console.log(newItem)
+    let currentItems = itemsToCart;
+    currentItems.push(newItem)
+    setItemsToCart(currentItems);
   }
 
   return (
