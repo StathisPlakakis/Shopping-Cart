@@ -1,0 +1,47 @@
+.parent {
+  display: grid;
+  grid-template-rows: 70vh 10vh;
+  justify-content: center;
+}
+
+.outerContainer {
+  display: grid;
+  grid-auto-rows: 200px;
+  grid-row-gap: 10px;
+  grid-template-columns: 750px;
+  justify-content: center;
+  margin-top: 10px;
+  overflow: scroll;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 100px 200px 100px 100px 100px;
+  grid-column-gap: 30px;
+  border: 1px solid rgb(255, 209, 178);
+  border-radius: 10px;
+  padding: 20px;
+  align-items: center;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.checkout {
+  background-color: rgb(247, 100, 1);
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+}

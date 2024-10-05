@@ -1,7 +1,7 @@
 import Header from "./components/Header/Header"
 import { Outlet } from "react-router-dom"
 import { useState } from 'react';
-
+import styles from './App.module.css'
 
 export default function App() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -42,7 +42,7 @@ export default function App() {
         handleReduction={handleReduction}
         itemsToCart={itemsToCart}
       />
-      {!isExpanded ? <Outlet context={{handleItemsToCartAddition}}/> : null}
+      {!isExpanded ? <Outlet context={{handleItemsToCartAddition, itemsToCart}}/> : null}
       
     </>
   )
