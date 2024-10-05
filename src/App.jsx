@@ -32,8 +32,20 @@ export default function App() {
     });
   };
   
-  
+  const handleItemDeletion = (e) => {
+    setItemsToCart((prevItems) => {
+      const updatedItems = [];
+      const itemId = e.target.getAttribute('id');
+      for (let i = 0; i < prevItems.length; i++) {
+        if (prevItems[i].id != parseInt(itemId)) {
+          updatedItems.push(prevItems[i])
+        }
+      }
 
+      return updatedItems;
+    })
+  }
+  
   return (
     <>
       <Header 
@@ -42,7 +54,11 @@ export default function App() {
         handleReduction={handleReduction}
         itemsToCart={itemsToCart}
       />
-      {!isExpanded ? <Outlet context={{handleItemsToCartAddition, itemsToCart}}/> : null}
+      {!isExpanded ? 
+      <Outlet context={{
+        handleItemsToCartAddition, handleItemDeletion, itemsToCart
+      }}/> : 
+      null}
       
     </>
   )

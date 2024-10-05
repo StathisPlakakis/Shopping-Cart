@@ -44,4 +44,23 @@
   border: none;
   padding: 10px;
   font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.checkout:hover {
+  background-color: rgb(255, 209, 178);
+}
+
+.delete {
+  color: rgb(247, 100, 1);
+  background-color: white;
+  border: 1px solid rgb(247, 100, 1);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.delete:hover {
+  border: 1px solid rgb(255, 209, 178);
+  color: rgb(255, 209, 178)
+
 }
