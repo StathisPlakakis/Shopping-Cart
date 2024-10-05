@@ -18,6 +18,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
+  padding: 10px;
 }
 
 .header.expanded {

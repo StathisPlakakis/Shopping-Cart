@@ -1,6 +1,5 @@
 import menu from '../../assets/menu-burger.svg';
 import menuHover from '../../assets/menu-burger-hover.svg';
-import cart from '../../assets/shopping-cart.svg';
 import close from '../../assets/cross-small.svg'
 import closeHover from '../../assets/cross-small-hover.svg'
 import styles from './Header.module.css';

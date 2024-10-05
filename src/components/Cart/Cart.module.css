@@ -1,5 +1,13 @@
+@font-face {
+  font-family: "Anton", sans-serif;
+  src: url('../../assets/Anton/Anton-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 .container {
   display: flex;
+  position: relative;
 }
 
 .cart {
@@ -12,5 +20,13 @@
   height: 20px;
   width: 20px;
   border-radius: 100%;
-  transform: translateX(-6px) translateY(-13px);
+  position: absolute;
+  transform: translateY(-15px) translateX(18px);
+  display: flex;
+  justify-content: center;
+  font-family: "Anton", sans-serif;
+  color: rgb(247, 100, 1);
+}
+
+.container:hover {
 }
