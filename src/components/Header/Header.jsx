@@ -50,7 +50,7 @@ export default function Header({
 
           <h1 className={styles.logo}>iSHOP</h1>
 
-          <Cart itemsToCart={itemsToCart}/>
+          <Link to='checkout'><Cart itemsToCart={itemsToCart}/></Link>
         </div>
       ) : (
         <div className={`${styles.newContent} ${isExpanded ? styles.visible : ''}`}>
