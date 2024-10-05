@@ -4,16 +4,18 @@ import cart from '../../assets/shopping-cart.svg';
 import close from '../../assets/cross-small.svg'
 import closeHover from '../../assets/cross-small-hover.svg'
 import styles from './Header.module.css';
-import { useState, useRef } from 'react';
+import { useState, useRef,  } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Cart from '../Cart/Cart';
 
-export default function Header({ isExpanded, handleExpansion, handleReduction }) {
+export default function Header({ 
+  isExpanded, handleExpansion, handleReduction, itemsToCart }) {
   const [showNewContent, setShowNewContent] = useState(false);
   const menuImgRef = useRef(null);
   const closeImgRef = useRef(null);
   const location = useLocation();
   const pathName =  location.pathname;
-
+  const [currentItems, setCurrentItems] = useState(itemsToCart);
 
   const handleMenuClick= () => {
     handleExpansion()
@@ -49,7 +51,7 @@ export default function Header({ isExpanded, handleExpansion, handleReduction })
 
           <h1 className={styles.logo}>iSHOP</h1>
 
-          <img src={cart} alt="Check out cart" className={styles.cart} />
+          <Cart itemsToCart={itemsToCart}/>
         </div>
       ) : (
         <div className={`${styles.newContent} ${isExpanded ? styles.visible : ''}`}>

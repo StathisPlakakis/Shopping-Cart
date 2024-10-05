@@ -16,9 +16,7 @@ export default function App() {
   };
 
   const handleItemsToCartAddition = (newItem) => {
-    let currentItems = itemsToCart;
-    currentItems.push(newItem)
-    setItemsToCart(currentItems);
+    setItemsToCart((prevItems) => [...prevItems, newItem]);
   }
 
   return (
@@ -27,6 +25,7 @@ export default function App() {
         isExpanded={isExpanded}
         handleExpansion={handleExpansion}
         handleReduction={handleReduction}
+        itemsToCart={itemsToCart}
       />
       {!isExpanded ? <Outlet context={{handleItemsToCartAddition}}/> : null}
       
