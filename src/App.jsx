@@ -16,8 +16,23 @@ export default function App() {
   };
 
   const handleItemsToCartAddition = (newItem) => {
-    setItemsToCart((prevItems) => [...prevItems, newItem]);
-  }
+    setItemsToCart((prevItems) => {
+      const updatedItems = [...prevItems];
+      
+      const existingItemIndex = updatedItems.findIndex(item => item.id === newItem.id);
+  
+      if (existingItemIndex >= 0) {
+        updatedItems[existingItemIndex].quantity = 
+          parseInt(updatedItems[existingItemIndex].quantity, 10) + parseInt(newItem.quantity, 10);
+      } else {
+        updatedItems.push(newItem);
+      }
+  
+      return updatedItems;
+    });
+  };
+  
+  
 
   return (
     <>

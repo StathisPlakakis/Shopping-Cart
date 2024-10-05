@@ -9,8 +9,13 @@ export default function Product() {
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [addedItem, setAddedItem] = useState(null);
   const {handleItemsToCartAddition} = useOutletContext();
-  const quantityRef = useRef(null);
+  let quantityRef = useRef(null);
+
+  useEffect(() => {
+    setAddedItem(addedItem)
+  },[addedItem])
 
 
   useEffect(() => {
@@ -37,16 +42,22 @@ export default function Product() {
 
   const handleClick = (e) => {
     e.preventDefault();
+  
+    const quantity = parseInt(quantityRef.current.value, 10);
+  
     let newItem = {
-      id:`${item.id}`,
-      title:`${item.title}`,
-      price:`${item.price}`,
-      quantity:`${quantityRef.current.value}`,
-      image:`${item.image}`
+      id: `${item.id}`,
+      title: `${item.title}`,
+      price: `${item.price}`,
+      quantity: quantity,
+      image: `${item.image}`
     };
-
+  
     handleItemsToCartAddition(newItem);
-  }
+
+    setAddedItem(newItem);
+  };
+  
 
   return (
     <div>
@@ -70,8 +81,7 @@ export default function Product() {
             />
             <button onClick={handleClick}>Add to chart</button>
           </form>
-        </div>
-        
+        </div> 
       }
     </div> 
   )
