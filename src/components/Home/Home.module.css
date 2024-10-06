@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Anton", sans-serif;
+  src: url('../../assets/Anton/Anton-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gridContainer {
+  display: grid;
+  gap: 50px;
+  font-family: "Anton", sans-serif;
+  height: 85vh;
+  overflow: scroll;
+}
+
+.head {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.headText {
+  display: grid;
+  gap: 10px;
+  padding: 50px;
+}
+
+.headText h2 {
+  font-size: 3rem;
+}
+
+span {
+  color: rgb(247, 100, 1);
+}
+
+.headText p {
+  font-size: 1.2rem;
+}
+
+.main {
+  display: grid;
+  gap: 57px;
+}
+
+.main h2 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.weOffer {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 300px);
+  justify-content: space-around;
+
+}
+
+.weOfferItem {
+  border: 1px solid rgb(247, 100, 1);
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.footer {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.footer a {
+  color: rgb(247, 100, 1);
+  font-size: 1.5rem;
+}
