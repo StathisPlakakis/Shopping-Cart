@@ -1,17 +1,25 @@
-ul {
+.items {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.container {
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: space-around;
+  height: 300px;
 }
 
-li {
-  width: fit-content;
+.image {
+  width: 100px;
+  height: 100px;
 }
 
-li:hover {
-  cursor: pointer;
+.container > h2 {
+  color: rgb(61, 61, 61);
 }
 
-.product {
-  color: black;
-}

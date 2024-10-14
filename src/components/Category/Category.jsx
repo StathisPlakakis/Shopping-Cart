@@ -52,9 +52,16 @@ export default function Category() {
           {loading && <p>Loading</p>}
           {
             products &&
-            <ul>
+            <ul className={styles.items}>
               {products.map((product, index) =>
-              <Link to={`${product.id}`} key={index}><li key={index} className={styles.product}>{product.title}</li></Link>)}
+              <Link to={`${product.id}`} key={index}>
+                <li key={index} className={styles.product}>
+                  <div className={styles.container}>
+                    <img src={product.image} alt="" className={styles.image}/>
+                    <h2>{product.title}</h2>
+                  </div>
+                </li>
+              </Link>)}
             </ul>
           }
         </div> :
