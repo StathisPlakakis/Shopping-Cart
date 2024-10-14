@@ -64,23 +64,31 @@ export default function Product() {
       {loading && <p>Loading</p>}
       {
         item && 
-        <div>
-          <img src={item.image} alt="" className={styles.image}/>
-          <ul>
-            <li>{`Title: ${item.title}`}</li>
-            <li>{`Price: ${item.price}$`}</li>
-          </ul>
-          <form>
-            <label htmlFor="quantity">Quantity</label>
-            <input
-              type="number"
-              defaultValue={1}
-              min={1}
-              id='quantity'
-              ref={quantityRef}
-            />
-            <button onClick={handleClick}>Add to chart</button>
-          </form>
+        <div className={styles.container}>
+          <div className={styles.image}>
+            <img src={item.image} alt="" className={styles.image}/>
+          </div>
+          <div className={styles.info}>
+            <ul>
+              <li><h2>{`${item.title}`}</h2></li>
+              <li><p>{`${item.description}`}</p></li>
+              <li><h2>{`Price: ${item.price}$`}</h2></li>
+              <li>
+                <form>
+                  <label className={styles.label} htmlFor="quantity">Quantity: </label>
+                  <input
+                    type="number"
+                    defaultValue={1}
+                    min={1}
+                    id='quantity'
+                    ref={quantityRef}
+                  />
+                  <button className={styles.add} onClick={handleClick}>Add to chart</button>
+                </form>
+              </li>
+            </ul>
+            
+          </div>
         </div> 
       }
     </div> 
